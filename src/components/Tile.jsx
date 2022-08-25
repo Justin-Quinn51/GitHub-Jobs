@@ -1,7 +1,15 @@
+import jobsData from '../data.json'
 
-
-export default function Tile({logo, company, newPost, featured, position, postedAt, contract, location, role, level, tools, languages, id}) {
+export default function Tile({logo, company, newPost, featured, position, postedAt, contract, location, role, level, tools, languages, key}) {
     
+    const requiredLanguages = jobsData.map(language => {
+        return jobsData[language]
+    })
+
+    const requiredTools = jobsData.map(tool => {
+        return tool
+    })
+
     return (
         <div className='bg-white w-5/6 mx-auto '>
           <section className='ml-3 leading-8'>
@@ -16,9 +24,8 @@ export default function Tile({logo, company, newPost, featured, position, posted
           <section className='flex gap-3 my-3 mx-2 h-10 w-5'>
             <div className='bg-zinc-200 p-1.5 text-aqua'>{role}</div>
             <div className='bg-zinc-200 p-1.5 text-aqua'>{level}</div>
-            { tools && (<div className='bg-zinc-200 p-1.5 text-aqua'></div>) }
-            { languages && (<div className='bg-zinc-200 p-1.5 text-aqua'></div>) }
-            <div className='bg-zinc-200 p-1.5 text-aqua'>JavaScript</div>
+            { requiredLanguages && (<div className='bg-zinc-200 p-1.5 text-aqua'>{languages}</div>) }
+            { requiredTools && (<div className='bg-zinc-200 p-1.5 text-aqua'>{tools}</div>) }
           </section>
         </div>
     )

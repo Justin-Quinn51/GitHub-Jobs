@@ -30,7 +30,6 @@ const tiles = JobsData.map(data => {
   return (
     <div className="App bg-background">
       <Header />
-      <Tile />
       {tiles}
     </div>
   )
