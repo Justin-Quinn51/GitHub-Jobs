@@ -8,7 +8,7 @@ function App() {
 
 const tiles = JobsData.map(data => {
   return (
-    <Tile 
+    <Tile
       key={data.id}
       logo={data.logo}
       company={data.company}
