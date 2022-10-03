@@ -6,9 +6,16 @@ import JobsData from './data.json'
 
 function App() {
 
+const [jobRequirements, setJobRequirements] = useState([])
+
+const handleClick = () => {
+  setJobRequirements(prevState => !prevState)
+}
+
 const tiles = JobsData.map(data => {
+  
   return (
-    <Tile
+    <Tile onClick={handleClick}
       key={data.id}
       logo={data.logo}
       company={data.company}
@@ -24,12 +31,19 @@ const tiles = JobsData.map(data => {
       tools={data.tools}
     />
   )
+  
 })
 
 
   return (
     <div className="App bg-background">
-      <Header />
+      <Header 
+        { ...jobRequirements && 
+          <>
+            <div>languages</div>
+          </>
+        }
+      />
       {tiles}
     </div>
   )
