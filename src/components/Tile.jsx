@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import Popup from './popup'
+
 
 export default function Tile({logo, company, newPost, featured, position, postedAt, contract, location, role, level, tools, languages, key}) {
 
@@ -7,7 +7,6 @@ export default function Tile({logo, company, newPost, featured, position, posted
 
     return (
         <div className={ featured ? 'bg-white w-5/6 pb-1 mx-auto shadow-lg border-l-4 border-l-aqua my-6 lg:flex py-3' : 'bg-white w-5/6 pb-2 mx-auto shadow-lg my-6 lg:flex py-3' }>
-          <Popup trigger={buttonPopup} />
           <section className='lg:flex items-center'>
               <img className='ml-6 mb-2 lg:mt-2' src={logo} alt="Company Logo" />
             <div className='ml-6 lg:'>
@@ -20,7 +19,7 @@ export default function Tile({logo, company, newPost, featured, position, posted
           </section>
           <hr className='mt-3 underline lg:hidden'/>
           <section className='flex flex-wrap gap-3 ml-6 my-3 lg:ml-auto pr-20 items-center'>
-            <div onClick={() => setButtonPopup(true)} className='bg-zinc-200 p-1.5 text-aqua hover:bg-aqua cursor-pointer hover:text-white'>{role}</div>
+            <div className='bg-zinc-200 p-1.5 text-aqua hover:bg-aqua cursor-pointer hover:text-white'>{role}</div>
             <div className='bg-zinc-200 p-1.5 text-aqua hover:bg-aqua cursor-pointer hover:text-white'>{level}</div>
             { languages.map((language) => <div key={key} className='bg-zinc-200 p-1.5 text-aqua hover:bg-aqua cursor-pointer hover:text-white'>{language}</div>) }
             { tools.map((tool) => <div key={key} className='bg-zinc-200 p-1.5 text-aqua hover:bg-aqua cursor-pointer hover:text-white'>{tool}</div>) }

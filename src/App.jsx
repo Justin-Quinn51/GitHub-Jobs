@@ -12,7 +12,35 @@ const handleClick = () => {
   setJobRequirements(prevState => !prevState)
 }
 
-const tiles = JobsData.map(data => {
+function selectCriteria() {
+  useEffect(() => {
+    const listenForClick = () => {}
+
+    window.addEventListener('click', listenForClick)
+    return () => {
+      window.removeEventListener('click', listenForClick)
+    }
+  }, [])
+}
+
+const tiles = JobsData.filter(e => {
+  if (jobRequirements.length === 0) {
+    return true
+  }
+  let found = false
+  jobRequirements.forEach(requirement => {
+    // e.languages.includes(requirement)
+    if(e.languages.includes(requirement) || 
+       e.tools.includes(requirement) || 
+       e.role.includes(requirement) ||
+       e.level.includes(requirement)) {
+        found = true
+        return
+    }
+  })
+  return found
+  
+}).map(data => {
   
   return (
     <Tile onClick={handleClick}
